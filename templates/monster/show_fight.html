@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+mon_name
+{% endblock title %}
+
+{% block main %}
+<div class="health_bar">
+  <div>Health: {{ user_health }}</div>
+  <div>Mana: {{ user_mana }}</div>
+  <div>XP: {{ user_xp }}</div>
+</div>
+
+<div class="mon_bar">
+  <img src="{{ mon_pic.url }}" class="" alt="{{ mon_name }}" />
+  <span>You're fighting a {{ mon_name }}</span>
+
+  {% if fight_results %}
+  <p>  You hit the {{ mon_name }} for {{ fight_results.damage }}.</p>
+  {% if fight_results.kill %}
+<p> You have slain {{ mon_name }}</p>
+  {% endif %}
+  {% else %}
+  <p>{{ mon_description }}</ap>
+{% endif %}
+<form method="post" id="" action=".">
+{% csrf_token %}
+  <input type="submit" value="Attack with <3" id="" />
+</form>
+</div>
+{% endblock main %}
